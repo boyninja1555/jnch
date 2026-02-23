@@ -9,6 +9,7 @@ public class ElementsValidityTest {
     void testDiv() {
         assertEquals("<div>Hello!</div>", render(div("Hello!")));
         assertEquals("<div class=\"hello\">Hello!</div>", render(div(attributes("class", "hello"), "Hello!")));
+        assertEquals("<div style=\"color: red;\">Hello!</div>", render(div(attributes("style", styles(style("color", "red"))), "Hello!")));
     }
 
     @Test

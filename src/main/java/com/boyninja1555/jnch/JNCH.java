@@ -14,6 +14,27 @@ import java.util.List;
 public class JNCH {
 
     /**
+     * CSS inline styles helper you can directly plug into an attribute's value.
+     *
+     * @param styles Attributes being used as key-value pairs for inline CSS (create each with style() for readability)
+     * @return Inline CSS (String)
+     */
+    public static String styles(Attribute... styles) {
+        return String.join("; ", Arrays.stream(styles).map(s -> s.name() + ": " + s.value()).toList());
+    }
+
+    /**
+     * HTML tag attribute helper.
+     *
+     * @param name  Attribute name
+     * @param value Attribute value (automatically converted to String)
+     * @return New Attribute class
+     */
+    public static Attribute style(String name, Object value) {
+        return new Attribute(name, value.toString());
+    }
+
+    /**
      * HTML tag multi-attribute helper.
      *
      * @param name1  Attribute 1 - Name
