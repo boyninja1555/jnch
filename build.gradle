@@ -1,5 +1,6 @@
 plugins {
     id "java-library"
+    id "maven-publish"
 }
 
 group = "com.boyninja1555"
@@ -15,6 +16,58 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:5.10.0"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.10.0"
     testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.10.0"
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/boyninja1555/jnch")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+            }
+        }
+    }
+
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+
+            artifactId = "jnch"
+            pom {
+                name = "JavaNativeCallsToHtml"
+                description = "Dead simple Java to HTML library "
+                url = "https://github.com/boyninja1555/jnch"
+
+                licenses {
+                    license {
+                        name = "MIT"
+                        url = "https://raw.githubusercontent.com/boyninja1555/jnch/main/LICENSE.md"
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = "boyninja1555"
+                        name = "Floor Mann"
+                        email = "flappyfloorg@gmail.com"
+                    }
+                }
+            }
+        }
+    }
+}
+
+tasks.register("release") {
+    group = "publishing"
+    description = "Publishes JNCH to GitHub Packages"
+    dependsOn("publishGprPublicationToGitHubPackagesRepository")
 }
 
 test {
