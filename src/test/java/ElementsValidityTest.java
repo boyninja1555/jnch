@@ -16,4 +16,9 @@ public class ElementsValidityTest {
     void testP() {
         assertEquals("<p>Hello!</p>", render(p("Hello!")));
     }
+
+    @Test
+    void testA() {
+        assertEquals("<a href=\"https://example.com\">Hello!</a>", render(a("https://example.com", "Hello!")));
+    }
 }

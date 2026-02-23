@@ -18,6 +18,10 @@ public abstract class GenericElement extends Element {
         super(attributes, children);
     }
 
+    public GenericElement(@NotNull Attribute... attributes) {
+        this(List.of(attributes), new Element[0]);
+    }
+
     public GenericElement(@NotNull Element... children) {
         this(List.of(), children);
     }

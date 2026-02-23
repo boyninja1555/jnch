@@ -1,10 +1,12 @@
 package com.boyninja1555.jnch;
 
 import com.boyninja1555.jnch.elements.generic.Div;
+import com.boyninja1555.jnch.elements.generic.Hyperlink;
 import com.boyninja1555.jnch.elements.generic.Paragraph;
 import com.boyninja1555.jnch.elements.lib.Attribute;
 import com.boyninja1555.jnch.elements.lib.Element;
 import com.boyninja1555.jnch.elements.lib.Text;
+import com.boyninja1555.jnch.elements.selfclosesimple.Img;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -291,6 +293,73 @@ public class JNCH {
      */
     public static Paragraph p(@NotNull String... children) {
         return new Paragraph(children);
+    }
+
+    /**
+     * HTML {@code <a>} tag.
+     *
+     * @param href       Link URL
+     * @param attributes Other attributes applied to element
+     * @param children   Children inside element's tree structure
+     * @return New Hyperlink class
+     */
+    public static Hyperlink a(@NotNull String href, @NotNull List<Attribute> attributes, @NotNull Element... children) {
+        return new Hyperlink(href, attributes, children);
+    }
+
+    /**
+     * HTML {@code <a>} tag.
+     *
+     * @param href       Link URL
+     * @param attributes Other attributes applied to element
+     * @param children   Children inside element's tree structure
+     * @return New Hyperlink class
+     */
+    public static Hyperlink a(@NotNull String href, @NotNull List<Attribute> attributes, @NotNull String... children) {
+        return new Hyperlink(href, attributes, children);
+    }
+
+    /**
+     * HTML {@code <a>} tag.
+     *
+     * @param href     Link URL
+     * @param children Children inside element's tree structure
+     * @return New Hyperlink class
+     */
+    public static Hyperlink a(@NotNull String href, @NotNull Element... children) {
+        return new Hyperlink(href, children);
+    }
+
+    /**
+     * HTML {@code <a>} tag.
+     *
+     * @param href     Link URL
+     * @param children Children inside element's tree structure
+     * @return New Hyperlink class
+     */
+    public static Hyperlink a(@NotNull String href, @NotNull String... children) {
+        return new Hyperlink(href, children);
+    }
+
+    /**
+     * HTML {@code <img />} tag.
+     *
+     * @param src        Image URL
+     * @param attributes Other attributes applied to element
+     * @return New Img class
+     */
+    public static Img img(@NotNull String src, @NotNull Attribute... attributes) {
+        return new Img(src, attributes);
+    }
+
+    /**
+     * HTML {@code <img />} tag.
+     *
+     * @param src Image URL
+     * @return New Img class
+     */
+    public static Img img(@NotNull String src) {
+        return new Img(src);
     }
 
     /**
