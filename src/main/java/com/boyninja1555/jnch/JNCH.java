@@ -3,6 +3,7 @@ package com.boyninja1555.jnch;
 import com.boyninja1555.jnch.elements.generic.Div;
 import com.boyninja1555.jnch.elements.generic.Hyperlink;
 import com.boyninja1555.jnch.elements.generic.Paragraph;
+import com.boyninja1555.jnch.elements.generic.Span;
 import com.boyninja1555.jnch.elements.lib.Attribute;
 import com.boyninja1555.jnch.elements.lib.Element;
 import com.boyninja1555.jnch.elements.lib.Text;
@@ -293,6 +294,48 @@ public class JNCH {
      */
     public static Paragraph p(@NotNull String... children) {
         return new Paragraph(children);
+    }
+
+    /**
+     * HTML {@code <span>} tag.
+     *
+     * @param attributes Attributes applied to element
+     * @param children   Children inside element's tree structure
+     * @return New Span class
+     */
+    public static Span span(@NotNull List<Attribute> attributes, @NotNull Element... children) {
+        return new Span(attributes.stream().filter(Objects::nonNull).toList(), children);
+    }
+
+    /**
+     * HTML {@code <span>} tag.
+     *
+     * @param attributes Attributes applied to element
+     * @param children   Children inside element's tree structure
+     * @return New Span class
+     */
+    public static Span span(@NotNull List<Attribute> attributes, @NotNull String... children) {
+        return new Span(attributes.stream().filter(Objects::nonNull).toList(), children);
+    }
+
+    /**
+     * HTML {@code <span>} tag.
+     *
+     * @param children Children inside element's tree structure
+     * @return New Span class
+     */
+    public static Span span(@NotNull Element... children) {
+        return new Span(children);
+    }
+
+    /**
+     * HTML {@code <span>} tag.
+     *
+     * @param children Children inside element's tree structure
+     * @return New Span class
+     */
+    public static Span span(@NotNull String... children) {
+        return new Span(children);
     }
 
     /**

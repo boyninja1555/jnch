@@ -13,8 +13,9 @@ public class ElementsValidityTest {
     }
 
     @Test
-    void testP() {
+    void testText() {
         assertEquals("<p>Hello!</p>", render(p("Hello!")));
+        assertEquals("<span>Hello!</span>", render(span("Hello!")));
     }
 
     @Test
