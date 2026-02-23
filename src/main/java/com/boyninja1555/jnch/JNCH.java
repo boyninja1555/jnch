@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class JNCH {
 
@@ -20,7 +21,7 @@ public class JNCH {
      * @return Inline CSS (String)
      */
     public static String styles(Attribute... styles) {
-        return String.join("; ", Arrays.stream(styles).map(s -> s.name() + ": " + s.value()).toList());
+        return String.join("; ", Arrays.stream(styles).filter(Objects::nonNull).map(s -> s.name() + ": " + s.value()).toList());
     }
 
     /**
@@ -185,7 +186,7 @@ public class JNCH {
      * @return New {@literal List<Attribute>}
      */
     public static List<Attribute> attributes(Attribute... attributes) {
-        return new ArrayList<>(Arrays.asList(attributes));
+        return new ArrayList<>(Arrays.stream(attributes).filter(Objects::nonNull).toList());
     }
 
     /**
@@ -216,7 +217,7 @@ public class JNCH {
      * @return New Div class
      */
     public static Div div(@NotNull List<Attribute> attributes, @NotNull Element... children) {
-        return new Div(attributes, children);
+        return new Div(attributes.stream().filter(Objects::nonNull).toList(), children);
     }
 
     /**
@@ -227,7 +228,7 @@ public class JNCH {
      * @return New Div class
      */
     public static Div div(@NotNull List<Attribute> attributes, @NotNull String... children) {
-        return new Div(attributes, children);
+        return new Div(attributes.stream().filter(Objects::nonNull).toList(), children);
     }
 
     /**
@@ -258,7 +259,7 @@ public class JNCH {
      * @return New Paragraph class
      */
     public static Paragraph p(@NotNull List<Attribute> attributes, @NotNull Element... children) {
-        return new Paragraph(attributes, children);
+        return new Paragraph(attributes.stream().filter(Objects::nonNull).toList(), children);
     }
 
     /**
@@ -269,7 +270,7 @@ public class JNCH {
      * @return New Paragraph class
      */
     public static Paragraph p(@NotNull List<Attribute> attributes, @NotNull String... children) {
-        return new Paragraph(attributes, children);
+        return new Paragraph(attributes.stream().filter(Objects::nonNull).toList(), children);
     }
 
     /**
